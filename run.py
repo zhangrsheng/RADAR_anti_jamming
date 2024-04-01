@@ -1,8 +1,5 @@
 import os
-# fileLst=["fre_current_two","fre_history_two"]
 fileLst=["fre_history_two"]
-# alLst1=["a2c","attention_a2c","dqn","DDQN","PPO","attention_PPO","random","continous_random","sarsa"]
-# alLst2=["continous_a2c","continous_a2c_attention","continous_PPO","continous_ppo_attention"]
 alLst1=["attention_PPO","continous_random"]
 alLst2=["continous_a2c","continous_a2c_attention"]
 alLst=alLst1+alLst2
