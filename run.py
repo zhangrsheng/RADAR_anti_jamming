@@ -1,12 +1,13 @@
 import os
 fileLst=["fre_history_two"]
-alLst1=["attention_PPO","continous_random"]
+alLst1=["continous_ppo_attention","continous_random"]
 alLst2=["continous_a2c","continous_a2c_attention"]
-alLst=alLst1+alLst2
-print(alLst)
+# alLst=alLst1+alLst2
+# print(alLst)
 # alLst=["continous_a2c","continous_PPO","attention_PPO"]
 # fileLst=["fre_history_two"]
-# alLst=["a2c","attention_a2c","dqn","DDQN","PPO","random","sarsa"]
+alLst=["a2c","attention_a2c","dqn","DDQN","random","sarsa"]+alLst1+alLst2
+
 actionLenLst=[4,5,6,7,8,9,10,11,12]
 jamLst=[0,1]
 rewardLst=[0,1,2]
