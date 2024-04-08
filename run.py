@@ -1,6 +1,6 @@
 import os
 fileLst=["fre_history_two"]
-alLst1=["continous_ppo_attention","continous_random"]
+alLst1=["continous_ppo","continous_random"]
 alLst2=["continous_a2c","continous_a2c_attention"]
 # alLst=alLst1+alLst2
 # print(alLst)
