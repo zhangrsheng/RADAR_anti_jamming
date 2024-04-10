@@ -5,7 +5,6 @@ from radarsimpy.tools import roc_pd, roc_snr
 import math
 from radarModel.radar import RadarModel
 
-
 class RadarFMCW():
     def __init__(self,radarF1,radarF2,interF1,interF2):
         self.Diff=abs((radarF1+radarF2)/2-(interF1-interF2)/2)
