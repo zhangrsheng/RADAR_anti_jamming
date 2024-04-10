@@ -8,10 +8,11 @@ from radarModel.radar import RadarModel
 class RadarFMCW():
     def __init__(self,radarF1,radarF2,interF1,interF2):
         self.Diff=abs((radarF1+radarF2)/2-(interF1-interF2)/2)
-        self.radarF1=60e9+radarF1*0.05e9
-        self.radarF2=60e9+radarF2*0.05e9
-        self.interF1=60e9+interF1*0.05e9
-        self.interF2=60e9+interF2*0.05e9
+        self.radarF1=radarF1*0.01e9+60e9
+        self.radarF2=radarF2*0.01e9+60e9
+        self.interF1=interF1*0.01e9+60e9
+        self.interF2=interF2*0.01e9+60e9
+
         self.radarMinFacor = 0.0001  # 加在噪声上，防止除以0
         self.pulses=4
         self.pfa=0.00001
