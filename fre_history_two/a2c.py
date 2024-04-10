@@ -24,27 +24,17 @@ class Network(nn.Module):
         self._h1 = nn.Linear(n_input, n_features)
         self._h2 = nn.Linear(n_features, n_features)
         self._h3 = nn.Linear(n_features, n_output)
-        self.attention = nn.Sequential(
-            nn.Linear(n_input, n_features),
-            nn.ReLU(),
-            nn.Linear(n_features, n_features),
-            nn.ReLU(),
-            nn.Linear(n_features, n_input),
-            nn.Softmax(dim=-1))
 
         nn.init.xavier_uniform_(self._h1.weight,
                                 gain=nn.init.calculate_gain('relu'))
         nn.init.xavier_uniform_(self._h2.weight,
-                                 gain=nn.init.calculate_gain('relu'))
+                                gain=nn.init.calculate_gain('relu'))
         nn.init.xavier_uniform_(self._h3.weight,
                                 gain=nn.init.calculate_gain('linear'))
 
     def forward(self, state, **kwargs):
-        attention_weights = self.attention(state.float())
-        state=torch.mul(state, attention_weights)
         features1 = torch.relu(self._h1(torch.squeeze(state, 1).float()))
         features2 = torch.relu(self._h2(features1))
-        features2=features1
         a = self._h3(features2)
 
         return a
@@ -74,7 +64,7 @@ def experiment(n_epochs, n_steps, n_steps_per_fit, n_step_test,jamType,actionLen
                               (mdp.info.action_space.n,),
                               beta=beta,
                               **policy_params)
-    print(mdp.info.observation_space.shape)
+
     # Agent
     critic_params = dict(network=Network,
                          optimizer={'class': optim.RMSprop,
@@ -109,7 +99,7 @@ def experiment(n_epochs, n_steps, n_steps_per_fit, n_step_test,jamType,actionLen
         dataset = core.evaluate(n_steps=n_step_test, render=False)
         # print(dataset)
         J = np.mean(compute_J(dataset))/radarStepNum
-        print(f'Objective function after learning: {J}')
+        print(f'Objective function after learning: {J},{n}')
         reward = max(reward, J)
         rewardRecord.append(J)
     save_csv(reward, "a2c", str(jamType)+"_history_two_" + str(rewardType), actionLen,rewardRecord)
@@ -119,16 +109,15 @@ if __name__ == '__main__':
 
     n_steps = 100
     n_steps_per_fit = 10
-    n_epochs = 100
+    n_epochs = 300
     historyLen=8
 
     actionLen = 6
     jamType = 0
     rewardType = 2
-    if len(sys.argv)>=3:
-        actionLen = int(sys.argv[1])
-        jamType =int(sys.argv[2])
-        rewardType =int( sys.argv[3])
+    actionLen = int(sys.argv[1])
+    jamType =int(sys.argv[2])
+    rewardType =int( sys.argv[3])
 
 
     radarStepNum = 10

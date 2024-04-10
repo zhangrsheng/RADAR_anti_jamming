@@ -18,7 +18,7 @@ radarType = "FMCW"
 env = SimRadar(actionLen=actionLen, radarStepNum=radarStepNum, jamType=jamType, radarType=radarType,
                rewardType=rewardType,historyLen=historyLen)
 epsiode=10
-epoch=100
+epoch=300
 totalReward=0
 rewardMax=float('-inf')
 rewardRecord=[]

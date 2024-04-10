@@ -47,7 +47,7 @@ def save_csv(reward,algorithm,name,actionLen,rewardRecord):
         df.to_csv("result//"+str(name)+"_"+str(actionLen)+".csv",index=False)
         print("--------------------save record-----------------------")
     else:
-        df = pd.DataFrame({"a2c":np.zeros(100), "DDQN":np.zeros(100), "dqn":np.zeros(100), "PPO":np.zeros(100), "sarsa":np.zeros(100),"random":np.zeros(100)})
+        df = pd.DataFrame({"a2c":np.zeros(300), "DDQN":np.zeros(300), "dqn":np.zeros(300), "PPO":np.zeros(300), "sarsa":np.zeros(300),"random":np.zeros(300)})
         df.to_csv("result//"+str(name)+"_"+str(actionLen)+".csv",index=False)
         df[algorithm] = rewardRecord
         df.to_csv("result//"+str(name)+"_"+str(actionLen)+".csv",index=False)

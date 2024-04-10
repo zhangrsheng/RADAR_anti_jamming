@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     n_steps = 100
     n_steps_per_fit = 10
-    n_epochs=100
+    n_epochs=300
     historyLen=8
 
     actionLen = 6
@@ -96,7 +96,7 @@ if __name__ == '__main__':
     target_update_frequency = 100
     initial_replay_size = 500
     max_replay_size = 5000
-    test_samples = 1000
+    test_samples = 100
     max_steps = 500000
 
 
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     J = np.mean(compute_J(dataset)) / radarStepNum
     reward=float('-inf')
     rewardRecord=[]
-    for n_epoch in range(1, n_epochs):
+    for n_epoch in range(0, n_epochs):
         print_epoch(n_epoch)
         print('- Learning:')
         # learning step
@@ -158,7 +158,6 @@ if __name__ == '__main__':
         # evaluation step
         pi.set_epsilon(epsilon_test)
         dataset = core.evaluate(n_steps=test_samples)
-        print(dataset)
         J = np.mean(compute_J(dataset))/radarStepNum
         print(f'Objective function after learning: {J}')
         scores.append(get_stats(dataset))

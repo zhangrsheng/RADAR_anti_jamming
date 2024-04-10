@@ -14,7 +14,7 @@ from fre_current_two.save_res import save_csv
 
 n_steps = 100
 n_steps_per_fit = 10
-n_epochs = 100
+n_epochs = 300
 
 # actionLen = 6
 # jamType = 0

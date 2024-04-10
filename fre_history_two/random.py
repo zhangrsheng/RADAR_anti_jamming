@@ -6,7 +6,7 @@ from fre_history_two.save_res import save_csv
 
 n_steps = 1000
 n_steps_per_fit = 10
-n_epochs = 100
+n_epochs = 300
 historyLen = 8
 
 actionLen = 6

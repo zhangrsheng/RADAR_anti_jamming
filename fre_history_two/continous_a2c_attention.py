@@ -122,7 +122,7 @@ if __name__ == '__main__':
 
     n_steps = 100
     n_steps_per_fit = 10
-    n_epochs = 100
+    n_epochs = 300
 
     actionLen = 6
     jamType = 0

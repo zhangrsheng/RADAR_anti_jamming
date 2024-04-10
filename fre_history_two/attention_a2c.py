@@ -43,7 +43,6 @@ class Network(nn.Module):
         state=torch.mul(state, attention_weights)
         features1 = torch.relu(self._h1(torch.squeeze(state, 1).float()))
         features2 = torch.relu(self._h2(features1))
-        features2=features1
         a = self._h3(features2)
 
         return a
@@ -118,17 +117,17 @@ if __name__ == '__main__':
 
     n_steps = 100
     n_steps_per_fit = 10
-    n_epochs = 100
+    n_epochs = 300
     historyLen=8
 
     actionLen = 6
     jamType = 0
     rewardType = 2
     import sys
-    if len(sys.argv)>=3:
-        actionLen = int(sys.argv[1])
-        jamType =int(sys.argv[2])
-        rewardType =int( sys.argv[3])
+
+    actionLen = int(sys.argv[1])
+    jamType = int(sys.argv[2])
+    rewardType = int(sys.argv[3])
     radarStepNum = 10
 
     radarType = "FMCW"
